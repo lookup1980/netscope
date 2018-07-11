@@ -16358,6 +16358,30 @@ module.exports = Analyzer = class Analyzer {
           d.mem.activation = d.wOut * d.hOut * d.chOut * d.batchOut;
           break;
         case "sigmoid":
+          //dimensions
+          d.wOut = d.wIn;
+          d.hOut = d.hIn;
+          d.chOut = d.chIn;
+          //computation
+          //TODO: copied from softmax, to be changed to sigmoid
+          d.comp.exp = d.wIn * d.hIn * d.chIn * d.batchOut;
+          d.comp.add = d.wIn * d.hIn * d.chIn * d.batchOut;
+          d.comp.div = d.wIn * d.hIn * d.chIn * d.batchOut;
+          //memory
+          d.mem.activation = d.wOut * d.hOut * d.chOut * d.batchOut;
+          break;          
+        case "silence":
+          //dimensions
+          d.wOut = 0;
+          d.hOut = 0;
+          d.chOut = 0;
+          //computation
+          d.comp.exp = 0;
+          d.comp.add = 0;
+          d.comp.div = 0;
+          //memory
+          d.mem.activation = 0;
+          break;   
         case "softmax":
         case "softmaxwithloss":
         case "softmax_loss":
