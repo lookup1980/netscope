@@ -16357,6 +16357,7 @@ module.exports = Analyzer = class Analyzer {
           //memory
           d.mem.activation = d.wOut * d.hOut * d.chOut * d.batchOut;
           break;
+        // mgu
         case "sigmoid":
           //dimensions
           d.wOut = d.wIn;
@@ -16369,7 +16370,8 @@ module.exports = Analyzer = class Analyzer {
           d.comp.div = d.wIn * d.hIn * d.chIn * d.batchOut;
           //memory
           d.mem.activation = d.wOut * d.hOut * d.chOut * d.batchOut;
-          break;          
+          break;
+        // mgu          
         case "silence":
           //dimensions
           d.wOut = 0;
@@ -16381,7 +16383,20 @@ module.exports = Analyzer = class Analyzer {
           d.comp.div = 0;
           //memory
           d.mem.activation = 0;
-          break;   
+          break;
+        // mgu   
+        case "slice":
+          //dimensions
+          d.wOut = d.wIn;
+          d.hOut = d.hIn;
+          d.chOut = d.chIn;
+          //computation
+          d.comp.exp = 0;
+          d.comp.add = 0;
+          d.comp.div = 0;
+          //memory
+          d.mem.activation = d.wOut * d.hOut * d.chOut * d.batchOut;
+          break;
         case "softmax":
         case "softmaxwithloss":
         case "softmax_loss":
