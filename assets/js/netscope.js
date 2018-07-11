@@ -16357,6 +16357,7 @@ module.exports = Analyzer = class Analyzer {
           //memory
           d.mem.activation = d.wOut * d.hOut * d.chOut * d.batchOut;
           break;
+        case "sigmoid":
         case "softmax":
         case "softmaxwithloss":
         case "softmax_loss":
