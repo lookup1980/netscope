@@ -18882,12 +18882,12 @@ module.exports = Network = class Network {
     }
     visit = function(node) {
       var child, j, len1, ref;
-      if (node.sort_.temp === true) {
-        throw "Graph is not a DAG.";
-      }
-      if (node.sort_.perm) {
-        return;
-      }
+      // if (node.sort_.temp === true) {
+      //   throw "Graph is not a DAG.";
+      // }
+      // if (node.sort_.perm) {
+      //   return;
+      // }
       node.sort_.temp = true;
       ref = node.children;
       for (j = 0, len1 = ref.length; j < len1; j++) {
