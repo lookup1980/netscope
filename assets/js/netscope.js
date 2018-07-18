@@ -18883,7 +18883,9 @@ module.exports = Network = class Network {
     visit = function(node) {
       var child, j, len1, ref;
       if (node.sort_.temp === true) {
-        throw "Graph is not a DAG.";
+      	// mgu
+        // throw "Graph is not a DAG.";
+        return;
       }
       if (node.sort_.perm) {
         return;
