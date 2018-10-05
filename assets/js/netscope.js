@@ -16166,6 +16166,7 @@ module.exports = Analyzer = class Analyzer {
           d.mem.activation = d.wOut * d.hOut * d.chOut * d.batchOut;
           break;
         case "convolution":
+        case "CQ":
           //dimensions
           params = n.attribs.convolution_param;
           kernel_w = (ref4 = params.kernel_w) != null ? ref4 : params.kernel_size;
@@ -16237,6 +16238,7 @@ module.exports = Analyzer = class Analyzer {
           break;
         case "innerproduct":
         case "inner_product":
+        case "InnerProductQuan":
           //dimensions
           numout = n.attribs.inner_product_param.num_output;
           has_bias = ((ref17 = n.attribs.inner_product_param.bias_term) != null ? ref17 : "true") === "false" ? 0 : 1;
@@ -16482,6 +16484,7 @@ module.exports = Analyzer = class Analyzer {
           break;
         //scale layer use activation memory and does multiplies
         case "scale":
+        case "ScaleQuan":
           //dimensions
           //# assume pass-through
           d.wOut = d.wIn;
